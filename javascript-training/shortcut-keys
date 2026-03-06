@@ -1,0 +1,9 @@
+// -------> Single line comment/uncomment - shortcut key Ctrl+/
+//  /*   */ ------> Multiline comment/uncomment - shortcut key Shift+Alt+A
+
+// Format the VSC code - Shift+Alt+F
+// Open the terminal - Ctrl+` (Backtick)
+// Go to specific line of error - Ctrl+G
+// Open the file (Ctrl+P) , close the file (Ctrl+W)
+// Rename JS file - Press F2
+

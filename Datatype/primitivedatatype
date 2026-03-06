@@ -1,0 +1,46 @@
+/*  
+Datatype has two types:
+  1. Primitive Datatype
+  2. Non-Primitive Datatype
+
+  Primitive Datatype- Immutable( unchangeable)
+  Non-Primitive Datatype - Mutable 
+
+  Primitive Datatype - number,string,boolean,undefined,null,symbol
+  */
+    // number
+    let a=10;
+    let b=20;
+    let c=a+b;
+    // console.log(typeof c); to know the type of datatype. consolw will display 'number'
+    console.log(c);
+
+    // String
+    let empName="Nalini";
+    let empStatus=true;
+    let empJob='Tester';
+    let empGender=`Female`;
+    console.log(`Employee name is ${empName} and Employee status is ${empStatus}`);
+    console.log("Employee name is" +empName+ " Employee job is" +empJob);
+    console.log(empGender);
+   // boolean
+   let x=10;
+   let y=20;
+   let z=x>y;
+   console.log(z);
+
+   // undefined
+   let p;
+   console.log(p);
+
+   // null
+   let s=10000;
+   s=null;
+   console.log(s);
+   
+
+
+
+
+
+
