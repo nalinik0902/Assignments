@@ -10,8 +10,7 @@
  // 5. Person's email address :"john.doe@example.com"
       let personEmailAddress:string="john.doe@example.com";
  // 6.  Coordinates 
-        let latitude:number=37.7749;
-        let longitude:number=-122.4194;
+        let coordinates:number[]=[37.7749,122.4194];
  // 7. Marital Status
        let marital_status:boolean=true;
  // 8.  Ocuupation
@@ -21,7 +20,7 @@
  // 10. current year
         let year:number=2023;
   // 11.  Followers
-        let Followers:number=1000000;
+        let Followers:string="1,000,000";
   // 12. Movie rating
         let movieRating:number=7.5;
   // 13. BloodType
@@ -40,6 +39,6 @@
      let birthPlace:string="New york city";
   // 20. Distance between two cities
      let distance:number=200.5;
-                                         
+
                               
 
