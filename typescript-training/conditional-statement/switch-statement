@@ -1,0 +1,16 @@
+// switch statement is used when you have a multiple condition to check against a single variable. 
+
+let priority:string="low";
+switch(priority){
+    case "High":
+        console.log("This defect has high prio and need fixing immediately");
+        break;
+    case "Medium":
+        console.log("This defect has medium priority");
+        break;
+    case "low":
+        console.log("This defect has low priority");
+        break;
+    default:
+        console.log("Invalid defect");            
+}

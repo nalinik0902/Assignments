@@ -1,0 +1,93 @@
+// Non primitive datatype - mutable (changeable)
+// 1. Objects - Represents data in key-value pair within curly braces
+
+let detailsOfPerson={name:"Nalini",
+            id:102,
+            status:true,
+            address: [{
+              city: 'Madurai',
+              state: 'TN' ,
+              zip: 60014 
+            },
+            {
+              city: "Chennai",
+              state: `TN`,
+              zip: 600001
+            }]
+};
+detailsOfPerson.age=33;   // to check mutable 
+
+//console.log(detailsOfPerson.id);
+//console.log(detailsOfPerson.name);
+   // or
+console.log(detailsOfPerson["name"]);
+console.log(detailsOfPerson["id"]);
+
+console.log(detailsOfPerson.address[0].city);
+console.log(detailsOfPerson.address[1].city);
+console.log(typeof detailsOfPerson);  // to know what type of datatype is it
+
+console.log(detailsOfPerson);
+
+//2. Array - Represents an ordered list of values. Arrays can contain elements of any data type.
+
+let empName=["Aadhya", "Shanyu","Madhu", "Nalini"];
+console.log(empName[0]);
+console.log(empName[2]);
+
+let empNameandId=["Madhu",101,"Nalini",105];
+console.log(empNameandId[1]);
+
+// class based datatype - map,set,date
+
+// 3. Map - collection of key-value pairs. key can be of any datatype. duplicate keys are not allowed. duplicate values are allowed.
+let empDetails=new Map();
+empDetails.set("empName","Madhu");
+empDetails.set("empId",123);
+empDetails.set("empSalary",20000);
+empDetails.set("empId", 345);
+empDetails.set("ename","Madhu");
+console.log(empDetails);
+console.log(empDetails.size);
+console.log(empDetails.get("empId"));
+
+
+//4. Set - Represents a collection of unique values, set will now allow the duplicate values.
+let empId=new Set();
+empId.add(123);
+empId.add(134);
+empId.add(436);
+empId.add(134);
+console.log(empId);
+
+// Date - Represents a specific point of time
+let todayDate=new Date();
+console.log(todayDate);
+
+
+//5. Functions - represents reusuable block of code. 
+    // collection of statements , collection of multiple lines of code
+    // Functions can be assigned to variables, passed as an aruguments and returned from other functions
+
+function loginIntoApp(browser,url){
+    // Here we mention repeated code for reusability
+    console.log("Launch the browser" +browser);
+    console.log("Enter url"+url+" and launch the app");
+    console.log("Login into app");
+}
+/************Testcase1***********/
+    console.log(loginIntoApp("chrome","www.google.com"));
+ /************Testcase2********** */  
+ console.log(loginIntoApp("edge","www.google.com")) ;
+
+
+ 
+
+
+
+
+
+
+
+
+

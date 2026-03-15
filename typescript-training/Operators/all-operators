@@ -1,0 +1,6 @@
+/* 1. Arithmetic operator -> +,-,*,/,%,++,--
+2. Assignment operator -> =,+=,-=,*=,/=,%=
+3. Comparision operator -> ==,===,!=,>,<,>=,<=
+4. Logic operator - > &&,||,!  
+5. Tenary operator -> 
+    syntax : condition ? statement1 : statement2 */
