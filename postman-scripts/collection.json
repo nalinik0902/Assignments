@@ -1,0 +1,458 @@
+{
+  "info": {
+    "_postman_id": "5a2b79b2-98d8-4d38-a790-ca3616389fe3",
+    "name": "GithubAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54146013",
+    "_collection_link": "https://go.postman.co/collection/54146013-5a2b79b2-98d8-4d38-a790-ca3616389fe3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "create a valid repository for the authenticated user",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// set the repo name as global variable\r",
+              "pm.globals.set(\"repoName\", \"AutomationTesting\");"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// validate the status code of the valid repository creation\r",
+              "pm.test(\"validate the status code of the valid repository\",function(){\r",
+              "    pm.expect(pm.response.code).to.eql(201)\r",
+              "\r",
+              "});\r",
+              " pm.test(\"validate the status message\",function(){\r",
+              "    pm.expect(pm.response.status).to.include(\"Created\")\r",
+              "\r",
+              "     });\r",
+              "\r",
+              "  pm.test(\"validate the response body of the valid repository\",function(){\r",
+              "    pm.expect(pm.response.json().name).to.eql(pm.globals.get(\"repoName\"));\r",
+              "    pm.expect(pm.response.json().private).to.eql(true);\r",
+              "\r",
+              "  });  \r",
+              "\r",
+              " pm.test(\"validate the response time\",function(){\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+              "        });\r",
+              "        \r",
+              " pm.test(\"validate the schema of valid repository\", function(){\r",
+              "    pm.expect(typeof(pm.response.json().name)).to.eql(\"string\")\r",
+              "\r",
+              "        });\r",
+              "\r",
+              "  setTimeout(()=>{\r",
+              "     console.log(\"waiting for 2 seconds\");\r",
+              "  },2000);      "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token}}"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github+json"
+          },
+          {
+            "key": "X-GitHub-Api-Version",
+            "value": "2022-11-28"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"{{repoName}}\",\r\n    \"private\":true,\r\n    \"description\":\"create a valid  repo\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl}}/user/repos",
+          "host": [
+            "{{baseurl}}"
+          ],
+          "path": [
+            "user",
+            "repos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update the repo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// validate the status code of the update the repository creation\r",
+              "pm.test(\"validate the status code of the update repository\",function(){\r",
+              "    pm.expect(pm.response.code).to.eql(200)\r",
+              "\r",
+              "});\r",
+              " pm.test(\"validate the status message of the update repo\",function(){\r",
+              "    pm.expect(pm.response.status).to.include(\"OK\")\r",
+              "\r",
+              "     });\r",
+              "\r",
+              "  pm.test(\"validate the response body of the update repository\",function(){\r",
+              "    pm.expect(pm.response.json().name).to.eql(pm.globals.get(\"repoName\"));\r",
+              "    pm.expect(pm.response.json().private).to.eql(false);\r",
+              "\r",
+              "  });  \r",
+              "\r",
+              " pm.test(\"validate the response time\",function(){\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+              "        });\r",
+              "        \r",
+              " pm.test(\"validate the schema of update repository\", function(){\r",
+              "    pm.expect(typeof(pm.response.json().name)).to.eql(\"string\")\r",
+              "\r",
+              "        });\r",
+              "  setTimeout(()=>{\r",
+              "     console.log(\"waiting for 2 seconds\");\r",
+              "  },2000);       "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token}}"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github+json"
+          },
+          {
+            "key": "X-GitHub-Api-Version",
+            "value": "2022-11-28"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\r\n    \"private\":false\r\n    \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl}}/repos/{{owner}}/AutomationTesting",
+          "host": [
+            "{{baseurl}}"
+          ],
+          "path": [
+            "repos",
+            "{{owner}}",
+            "AutomationTesting"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "search and get the repo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// validate the status code of get the  repository \r",
+              "pm.test(\"validate the status code of get the repository request\",function(){\r",
+              "    pm.expect(pm.response.code).to.eql(200)\r",
+              "\r",
+              "});\r",
+              " pm.test(\"validate the status message of get the repo request\",function(){\r",
+              "    pm.expect(pm.response.status).to.include(\"OK\")\r",
+              "\r",
+              "     });\r",
+              "\r",
+              "  pm.test(\"validate the response body of the get repository request\",function(){\r",
+              "    pm.expect(pm.response.json().name).to.eql(pm.globals.get(\"repoName\"));\r",
+              "    pm.expect(pm.response.json().private).to.eql(false);\r",
+              "\r",
+              "  });  \r",
+              "\r",
+              " pm.test(\"validate the response time\",function(){\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+              "        });\r",
+              "        \r",
+              " pm.test(\"validate the schema of get the repository request\", function(){\r",
+              "    pm.expect(typeof(pm.response.json().name)).to.eql(\"string\")\r",
+              "\r",
+              "        });\r",
+              " setTimeout(()=>{\r",
+              "     console.log(\"waiting for 2 seconds\");\r",
+              "  },2000);        "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token}}"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github+json"
+          },
+          {
+            "key": "X-GitHub-Api-Version",
+            "value": "2022-11-28"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl}}/repos/{{owner}}/AutomationTesting",
+          "host": [
+            "{{baseurl}}"
+          ],
+          "path": [
+            "repos",
+            "{{owner}}",
+            "AutomationTesting"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete the repo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// validate the status code of the delete repository creation\r",
+              "pm.test(\"validate the status code of the delete repository\",function(){\r",
+              "    pm.expect(pm.response.code).to.eql(204)\r",
+              "\r",
+              "});\r",
+              " pm.test(\"validate the status message of the update repo\",function(){\r",
+              "    pm.expect(pm.response.status).to.include(\"No Content\")\r",
+              "\r",
+              "     });\r",
+              "\r",
+              " pm.test(\"validate the response time\",function(){\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+              "        });\r",
+              "  setTimeout(()=>{\r",
+              "     console.log(\"waiting for 2 seconds\");\r",
+              "  },2000);       \r",
+              "        \r",
+              " "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token}}"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github+json"
+          },
+          {
+            "key": "X-GitHub-Api-Version",
+            "value": "2022-11-28"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl}}/repos/{{owner}}/{{repoName}}",
+          "host": [
+            "{{baseurl}}"
+          ],
+          "path": [
+            "repos",
+            "{{owner}}",
+            "{{repoName}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create a duplicate repository for the authenticated user",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// set the repo name as global variable. \r",
+              "pm.globals.set(\"repoName\",\"PlaywrightAutomation\");"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// validate the status code of the duplicate repository creation\r",
+              "pm.test(\"validate the status code of the duplicate repository\",function(){\r",
+              "    pm.expect(pm.response.code).to.eql(422)\r",
+              "\r",
+              "});\r",
+              "\r",
+              "pm.test(\"validate the error message for duplicate repository\",function(){\r",
+              "    pm.expect(pm.response.json().message).to.eql(\"Repository creation failed.\")\r",
+              "    });\r",
+              "\r",
+              "    pm.test\r",
+              "    (\"validate the error code for duplicate repository\",function(){\r",
+              "        pm.expect(pm.response.json().errors[0].code).to.eql(\"custom\")\r",
+              "        });\r",
+              "\r",
+              "        pm.test(\"validate the status message\",function(){\r",
+              "            pm.expect(pm.response.status).to.include(\"Unprocessable Entity\")\r",
+              "\r",
+              "        });\r",
+              "\r",
+              "        pm.test(\"validate the response time\",function(){\r",
+              "          pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+              "        });\r",
+              "        \r",
+              "        pm.test(\"vaidate the schema of duplicate repository\", function(){\r",
+              "          pm.expect(typeof (pm.response.json().message)).to.eql(\"string\")\r",
+              "\r",
+              "        });\r",
+              "        setTimeout(()=>{\r",
+              "          console.log(\"waiting for 2 seconds\");\r",
+              "             },2000); "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token}}"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github+json"
+          },
+          {
+            "key": "X-GitHub-Api-Version",
+            "value": "2022-11-28"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"{{repoName}}\",\r\n    \"private\":true,\r\n    \"description\":\"create a duplicate repo\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl}}/user/repos",
+          "host": [
+            "{{baseurl}}"
+          ],
+          "path": [
+            "user",
+            "repos"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

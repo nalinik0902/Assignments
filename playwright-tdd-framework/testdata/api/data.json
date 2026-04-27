@@ -1,0 +1,31 @@
+{
+    "duplicateRepo":{
+        "requestType":"POST",
+        "endpoint":"/user/repos",
+        "body":{
+            "name":"Automation",
+            "description":"This is a test repository created using Playwright TDD Framework",
+            "private":true
+        },
+        "expectedStatusCode":422,
+        "expectedstatusMessage":"Unprocessable Entity",
+        "expErrorMessage":"Repository creation failed."
+    },
+    "validRepo":{
+        "requestType":"POST",
+        "endpoint":"/user/repos",
+        "body":{
+            "name":"Auto",
+            "description":"This is a test repository created using Playwright TDD Framework",
+            "private":true
+        },
+        "expectedStatusCode":201,
+        "expectedStatusMessage":"Created"
+    },
+    "deleteRepo":{
+        "requestType":"DELETE",
+        "endpoint":"/repos/nalinik0902/playwrightRepo",    
+        "expectedStatusCode":204,
+        "expectedStatusMessage":"No Content"
+    }
+}

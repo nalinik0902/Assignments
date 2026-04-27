@@ -1,0 +1,51 @@
+Worker is a separate process to run the test cases.
+Each worker runs single files at a time
+1 worker = only 1 file runs at a time when fullyParallel=false.
+2 workers - 2 files can run at the same time. This is called parallel at file level .when you have two spec.ts file
+
+
+Inside one file:
+
+Test1
+Test2
+Test3
+
+By default:
+👉 They run one by one (NOT parallel).
+-------------------------------------------------------
+
+
+fullyParallel = true
+This means:
+👉 Tests inside the file can run together
+-------------------------------------------------
+workers = 2
+fullyParallel = false    - This is recommended
+
+File1 and File2 run together
+👉 But inside each file → tests run one by one
+
+✔ Safe
+✔ Used in real projects
+
+---------------------------------------------------
+workers = 2
+fullyParallel = true
+
+👉 File1 + File2 run together
+👉 AND tests inside also run together
+
+⚡ Very fast
+❌ Can cause issues (data clash, login conflicts)
+---------------------------------------------
+
+Final Understanding:
+
+👉 workers = how many files run together
+👉 fullyParallel = tests inside file run together or not
+
+----------------------------------------------------------
+
+“If fullyParallel is enabled, tests inside a file run simultaneously,
+which can cause issues like shared session conflicts. So in real projects, 
+we keep fullyParallel false and rely on multiple workers for safe parallel execution.”

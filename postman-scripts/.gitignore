@@ -1,0 +1,4 @@
+postman-scripts/newman/*.html
+.env
+config.json
+env.json

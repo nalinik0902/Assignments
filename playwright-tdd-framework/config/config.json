@@ -1,0 +1,27 @@
+{
+ "app":{
+   "url":"https://accounts.creatio.com/login/alm",
+   "title":"Log in | Creatio",
+   "username":"nalinik0902@gmail.com",
+   "password":"Nalini@0902"
+   
+ },
+  "db": {
+        "host": "localhost",
+        "port": 330,
+        "username": "root",
+        "password": "password",
+        "database": "my_database"
+    },
+    "api": {
+        "baseurl": "https://api.github.com",
+        "bearer_token": "Bearer <token>",
+        "owner":"nalinik0902"
+    },
+    "ollama": {
+        "model": "ollama/model:latest",
+        "temperature": 0.7,
+        "max_tokens": 1000
+    }
+}
+

@@ -1,0 +1,5 @@
+//"extends" key is used for inheritance between classes, where a child class can reuse properties and methods from a parent class. it extends only one calss.
+//"implements" key make a class to follow all the methods defined in the interface.
+
+
+//

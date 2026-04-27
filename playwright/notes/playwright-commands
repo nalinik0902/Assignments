@@ -1,0 +1,28 @@
+
+# Install playwright
+npm init playwright@latest
+# Install specific version of playwright
+npm install -D @playwright/test@1.36.0
+# Run all the tests in playwright test
+npx playwright test
+# Run a specific test file
+npx playwright test tests/1_first_test.spec.ts
+# Run a specific test in a file
+npx playwright test tests/1_first_test.spec.ts -g "search text in google"
+# Run tests in headed mode (with browser UI)
+npx playwright test --headed
+# Run tests in a specific browser (chromium, firefox, webkit)
+npx playwright test --project=chromium
+npx playwright test --project=firefox --project=webkit
+# View HTML report after tests
+npx playwright show-report
+# To record a new trace for a test from commands
+npx playwright test --trace=on
+# To run tests in debug mode
+npx playwright test --debug
+# To run tests in ui mode
+npx playwright test --ui
+# To run last failed tests
+npx playwright test --last-failed
+# To generate a new test script from recording
+npx playwright codegen https://opensource-demo.orangehrmlive.com/
